@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# Defensive pre-commit guard for a PUBLIC repository.
+# Refuses to stage business data, secrets, or company identifiers — a public repo is
+# indexed/cached forever, so the cheapest place to stop a leak is BEFORE the commit.
+#
+# Edit the two lists below to tune. Bypass (discouraged) with: git commit --no-verify
+set -uo pipefail
+
+red() { printf '\033[31m%s\033[0m\n' "$*" >&2; }
+fail=0
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+# --- 1) Forbidden file types / paths (business data + secrets) ---
+while IFS= read -r path; do
+  [ -z "$path" ] && continue
+  case "$path" in
+    *.xlsx|*.xls|*.xlsm|*.csv|*.parquet|*.db|*.sqlite|*.sqlite3)
+      red "BLOCKED data file: $path  (business data stays local — see input/README.md)"; fail=1 ;;
+    .env|*/.env)
+      red "BLOCKED secret file: $path  (commit .env.example instead)"; fail=1 ;;
+    *.pem|*.key|*.p12|*.pfx)
+      red "BLOCKED key material: $path"; fail=1 ;;
+    input/README.md) : ;;
+    input/*)
+      red "BLOCKED input/ data: $path  (only input/README.md is tracked)"; fail=1 ;;
+  esac
+done <<< "$staged"
+
+# --- 2) Forbidden content in the staged diff (company identifiers + secrets) ---
+# The guard never scans itself (.githooks holds these patterns as literals).
+# Format: "label|extended-regex"
+patterns=(
+  "company domain|solutions30"
+  "company email|[A-Za-z0-9._%+-]+@solutions30"
+  "internal system name|\\bPC30\\b"
+  "internal system name|\\bSDM\\b"
+  "private key|-----BEGIN [A-Z ]*PRIVATE KEY-----"
+  "AWS access key id|AKIA[0-9A-Z]{16}"
+  "hardcoded secret|(password|passwd|secret|api[_-]?key|token)[\"' ]*[:=][\"' ]*[A-Za-z0-9/+=_-]{8,}"
+)
+
+added=$(git diff --cached --unified=0 -- ':(exclude).githooks' ':(exclude)scripts/setup-hooks.sh' \
+        | grep '^+' | grep -v '^+++' || true)
+
+if [ -n "$added" ]; then
+  for entry in "${patterns[@]}"; do
+    label="${entry%%|*}"; regex="${entry#*|}"
+    hits=$(printf '%s\n' "$added" | grep -nEi -e "$regex" || true)
+    if [ -n "$hits" ]; then
+      red "BLOCKED $label in staged changes:"
+      printf '%s\n' "$hits" | head -3 >&2
+      fail=1
+    fi
+  done
+fi
+
+if [ "$fail" -ne 0 ]; then
+  red ""
+  red "pre-commit refused. Remove the offending content, or — only if truly intended —"
+  red "bypass with: git commit --no-verify"
+  exit 1
+fi
+exit 0
