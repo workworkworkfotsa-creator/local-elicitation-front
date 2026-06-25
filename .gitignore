@@ -27,3 +27,6 @@ Thumbs.db
 # Keep example files (e.g. a reconciliation .xlsx) here locally for Tier B tests.
 input/*
 !input/README.md
+
+# Local session memory (read by /resume at cold open) — not part of the public portfolio
+HANDOFF.md
