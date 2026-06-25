@@ -1,0 +1,7 @@
+# Normalise line endings: LF in the repo, auto on checkout. Keeps diffs clean across
+# Windows (dev) and Linux (IT handoff target).
+* text=auto eol=lf
+
+# Binary fixtures — never line-ending-converted.
+*.xlsx binary
+*.gguf binary

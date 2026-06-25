@@ -1,0 +1,23 @@
+# Virtual workspace root (NonProjectWorkspace) — coordinator only, ships no code itself.
+# The blocks live under packages/ ; each depends ONLY on `contract` (the boundary), never on
+# another block. See docs/dictionnaire-metier.md for what each package means.
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+# Shared dev tooling for the whole workspace. Installed via `uv sync --all-packages`.
+[dependency-groups]
+dev = [
+    "ruff>=0.8",
+    "pytest>=8",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["packages", "tests"]
