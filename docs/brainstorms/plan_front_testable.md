@@ -1,6 +1,6 @@
 # Plan front testable — du banc au code
 
-> Le « quoi/comment construire + tester ». Auto-porté. Le cadrage : [CLAUDE.md](CLAUDE.md). Les décisions
+> Le « quoi/comment construire + tester ». Auto-porté. Le cadrage : [CLAUDE.md](../../CLAUDE.md). Les décisions
 > + risques : [decisions_et_risques.md](decisions_et_risques.md). Objectif : un front **headless-first**,
 > **testable par toi à chaque jalon** (une commande `uv run` qui imprime la spec + un verdict d'oracle),
 > puis on code.

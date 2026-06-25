@@ -4,7 +4,7 @@ Glossaire **curé à la main + confirmé** (jamais supposé). But : tuer les té
 **avant** qu'ils ne se bétonnent dans les noms de packages/code.
 
 > **Ancrage (état greenfield, 2026-06-25)** : pas encore de code → la *source de vérité* de chaque terme
-> est un **doc de cadrage** (`CLAUDE.md`, `decisions_et_risques.md`, `knobs_2_3_resolus_2026-06-25.md`).
+> est un **doc de cadrage** (`CLAUDE.md` à la racine ; les docs de brainstorm sous `docs/brainstorms/`).
 > Quand le code existera, ré-ancrer sur `fichier:ligne`. Convention : terme → définition terrain →
 > source ancrée → liens `[[terme]]`.
 

@@ -2,16 +2,16 @@
 
 Cadrage autoritaire pour Claude Code. Dépôt **greenfield**, raisonné depuis le but — **aucun héritage**
 d'un projet antérieur (même les « bonnes idées » se re-justifient ici depuis zéro ou elles ne sont pas
-là). Le « comment construire + tester » : [plan_front_testable.md](plan_front_testable.md). Les
-décisions actées + risques : [decisions_et_risques.md](decisions_et_risques.md).
+là). Le « comment construire + tester » : [plan_front_testable.md](docs/brainstorms/plan_front_testable.md). Les
+décisions actées + risques : [decisions_et_risques.md](docs/brainstorms/decisions_et_risques.md).
 
 ## Navigation & commandes (orientation rapide — état au 2026-06-25)
 
 **État du dépôt : greenfield, aucun code écrit.** 5 docs seulement, pas de `pyproject.toml`, pas de
 `tests/`. Le premier code = la **brique 1** (model-free : `ModelClient` + `FakeModelClient` + trace
-append-only + Tier A) — premier ticket dans le [handoff](handoff_claude_code_2026-06-25.md). Les commandes
+append-only + Tier A) — premier ticket dans le [handoff](docs/brainstorms/handoff_claude_code_2026-06-25.md). Les commandes
 *smoke* M1–M5 (`smoke_obeissance`, `smoke_elicit`, `smoke_fichier`…) sont **spécifiées**
-([plan_front_testable.md](plan_front_testable.md) §4) mais **n'existent pas encore** — ne pas les inventer,
+([plan_front_testable.md](docs/brainstorms/plan_front_testable.md) §4) mais **n'existent pas encore** — ne pas les inventer,
 elles naissent avec le code.
 
 Carte des docs (ordre de lecture pour une session froide) :
@@ -19,10 +19,10 @@ Carte des docs (ordre de lecture pour une session froide) :
 | Doc | Rôle |
 |---|---|
 | `CLAUDE.md` (ici) | cadrage autoritaire stable — le *pourquoi*, les garde-fous |
-| [handoff_claude_code_2026-06-25.md](handoff_claude_code_2026-06-25.md) | état courant + **premier ticket** (brique 1) + critères vérifiables |
-| [plan_front_testable.md](plan_front_testable.md) | composants à bâtir, jalons M1–M5, deux tiers de test, **ordre du sprint (§7)** |
-| [decisions_et_risques.md](decisions_et_risques.md) | cas réel FAE décortiqué, scorecard BANANE (sélection modèle), risques |
-| [knobs_2_3_resolus_2026-06-25.md](knobs_2_3_resolus_2026-06-25.md) | vocab fermé + détection Excel — alimente briques 3 & 5 |
+| [handoff_claude_code_2026-06-25.md](docs/brainstorms/handoff_claude_code_2026-06-25.md) | état courant + **premier ticket** (brique 1) + critères vérifiables |
+| [plan_front_testable.md](docs/brainstorms/plan_front_testable.md) | composants à bâtir, jalons M1–M5, deux tiers de test, **ordre du sprint (§7)** |
+| [decisions_et_risques.md](docs/brainstorms/decisions_et_risques.md) | cas réel FAE décortiqué, scorecard BANANE (sélection modèle), risques |
+| [knobs_2_3_resolus_2026-06-25.md](docs/brainstorms/knobs_2_3_resolus_2026-06-25.md) | vocab fermé + détection Excel — alimente briques 3 & 5 |
 
 Toolchain (détail § Toolchain & vérité) — commandes une fois le code présent :
 

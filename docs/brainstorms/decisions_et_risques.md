@@ -1,7 +1,7 @@
 # Décisions & risques — MiniChat (front d'élicitation)
 
 > Auto-porté : raisonné depuis le but, pas depuis un projet antérieur. Le « pourquoi » derrière le
-> cadrage ([CLAUDE.md](CLAUDE.md)) et le plan ([plan_front_testable.md](plan_front_testable.md)).
+> cadrage ([CLAUDE.md](../../CLAUDE.md)) et le plan ([plan_front_testable.md](plan_front_testable.md)).
 
 ## Le cas qui justifie tout : « FAE »
 

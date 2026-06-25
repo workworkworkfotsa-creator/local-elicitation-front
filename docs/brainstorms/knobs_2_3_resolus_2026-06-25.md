@@ -7,8 +7,8 @@
 
 ## Ce que le fichier réel contient (décodé, formules lues — pas les valeurs)
 
-Réconciliation **2 systèmes** : `SYNTHESE` (= extract **PC30**, 12693 lignes) ↔ `PX_CLIENT par Inter`
-(= extract **SDM**, 50000 lignes). Confirmé par les labels du `BILAN-DICO`.
+Réconciliation **2 systèmes** : `SYNTHESE` (= extract **Système-A**, 12693 lignes) ↔ `PX_CLIENT par Inter`
+(= extract **Système-B**, 50000 lignes). Confirmé par les labels du `BILAN-DICO`.
 
 - **Clé de jointure = `ID Inter`** ; **clé de secours = `Réf partenaire`** — exactement comme prédit, et
   le fallback est **enfoui** : `PX_CLIENT!E = IF(ISNA(VLOOKUP(A,SYNTHESE!D:D,1,0)), IF(ISNA(VLOOKUP(A,SYNTHESE!E:E,1,0)),0,1),1)`
@@ -39,7 +39,7 @@ request_type ∈ { croisement_fichiers , AUTRE }
 
 | slot | source FAE | dans l'artefact comme |
 |---|---|---|
-| `fichiers_sources[]` (+ `role`) | SYNTHESE=PC30, PX_CLIENT=SDM | confirmé ou question |
+| `fichiers_sources[]` (+ `role`) | SYNTHESE=Système-A, PX_CLIENT=Système-B | confirmé ou question |
 | `cle_jointure` | `ID Inter` | hypothèse pré-remplie → swipe |
 | `cle_secours` | `Réf partenaire` | hypothèse pré-remplie → swipe |
 | `dictionnaires_annexes[]` (+ `source`) | dico.xlsx + copie VARIABLES | confirmé ou question |

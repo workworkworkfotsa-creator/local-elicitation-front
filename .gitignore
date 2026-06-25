@@ -22,3 +22,8 @@ wheels/
 Thumbs.db
 .idea/
 .vscode/
+
+# Local-only input data — NEVER commit company/business files to this public repo.
+# Keep example files (e.g. a reconciliation .xlsx) here locally for Tier B tests.
+input/*
+!input/README.md
