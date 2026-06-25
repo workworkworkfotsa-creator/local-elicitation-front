@@ -1,5 +1,7 @@
 # local-elicitation-front
 
+[![CI](https://github.com/workworkworkfotsa-creator/local-elicitation-front/actions/workflows/ci.yml/badge.svg)](https://github.com/workworkworkfotsa-creator/local-elicitation-front/actions/workflows/ci.yml)
+
 > A decentralized, on-prem elicitation front that turns a vague business need
 > into a structured, co-authored spec — without re-interrogating the requester.
 > **The front asks; downstream builds. It never produces a solution.**
